@@ -1,19 +1,6 @@
 //load products.json
 var data = require("./products.json")
 
-//define getItemsCount function
-//accepts full item data
-//returns the length of the items array
-// var getItemsCount = function(itemData){
-// 	return itemData.items.length;
-// };
-
-//output item count using the getItemsCount function
-//console.log('Item Count: ' + getItemsCount(data));
-
-//create your answer in this file.
-//the above is just provided as a simple example.
-
 // PART ONE: getItems(array)
 //      Create a function called getItems that simply returns the 
 //      items array from the google product object.
@@ -32,13 +19,14 @@ var getItemsByBrand = function(itemData, brand) {
     var itemsByBrand = [];
     for (var i = 0; i < itemData.length; i++) {
         if (itemData[i].product.brand.toUpperCase() === brand.toUpperCase()) {
-            itemsByBrand.push(itemData[i].product);
+            //itemsByBrand.push(itemData[i].product);
+            itemsByBrand.push(itemData[i]);
         };
     };
     return itemsByBrand;
 };
 
-//console.log(getItemsByBrand(getItems(), "Canon"));
+// console.log(getItemsByBrand(getItems(), "Canon"));
 
 // PART THREE: getItemsByAuthor(array, author)
 //      Create a function called `getItemsByAuthor` that takes an item 
@@ -49,7 +37,8 @@ var getItemsByAuthor = function(itemData, author) {
     var itemsByAuthor = [];
     for (var i = 0; i < itemData.length; i++) {
         if (itemData[i].product.author.name.toUpperCase().indexOf(author.toUpperCase()) >= 0) {
-            itemsByAuthor.push(itemData[i].product);
+            // itemsByAuthor.push(itemData[i].product);
+            itemsByAuthor.push(itemData[i]);
         };
     };
     return itemsByAuthor;
@@ -72,7 +61,8 @@ var getAvailableProducts = function(itemData) {
         for (var j = 0; j < inventoriesLength; j++)
             if (itemData[i].product.inventories[j].availability === "inStock") {
                 // console.log(i + " " + itemData[i].product.googleId + ": " + itemData[i].product.inventories[j].availability);
-                itemsInStock.push(itemData[i].product);
+                // itemsInStock.push(itemData[i].product);
+                itemsInStock.push(itemData[i]);
             };
     };
     return itemsInStock;
@@ -100,7 +90,6 @@ console.log('-------------------------------------------------------------------
 console.log('-------------------------------------------------------------------------');
 console.log('All items made by Nikon with the author eBay:');
     var itemsByNikon = getItemsByBrand(getItems(), "Nikon")
-console.log(itemsByNikon);
 console.log(getItemsByAuthor(itemsByNikon, "eBay"));
 
 
