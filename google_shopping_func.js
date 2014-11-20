@@ -71,14 +71,14 @@ var getAvailableProducts = function(itemData) {
         var inventoriesLength = itemData[i].product.inventories.length;
         for (var j = 0; j < inventoriesLength; j++)
             if (itemData[i].product.inventories[j].availability === "inStock") {
-                console.log(i + " " + itemData[i].product.googleId + ": " + itemData[i].product.inventories[j].availability);
+                // console.log(i + " " + itemData[i].product.googleId + ": " + itemData[i].product.inventories[j].availability);
                 itemsInStock.push(itemData[i].product);
             };
     };
     return itemsInStock;
 };
 
-console.log(getAvailableProducts(getItems()));
+// console.log(getAvailableProducts(getItems()));
 
 // PART FIVE: Use your functions
 //      Use the functions you created in 1 - 5 to print find the following 
@@ -86,5 +86,24 @@ console.log(getAvailableProducts(getItems()));
 //          * All items made by Nikon with the author eBay.
 //          * All items made by Sony.
 //          * All items made by Sony that are available.
+
+console.log('-------------------------------------------------------------------------');
+console.log('-------------------------------------------------------------------------');
+console.log('All items made by Sony:');
+    var itemsBySony = getItemsByBrand(getItems(), "Sony")
+console.log(itemsBySony);
+console.log('-------------------------------------------------------------------------');
+console.log('-------------------------------------------------------------------------');
+console.log('All items made by Sony that are available:');
+console.log(getAvailableProducts(itemsBySony));
+console.log('-------------------------------------------------------------------------');
+console.log('-------------------------------------------------------------------------');
+console.log('All items made by Nikon with the author eBay:');
+    var itemsByNikon = getItemsByBrand(getItems(), "Nikon")
+console.log(itemsByNikon);
+console.log(getItemsByAuthor(itemsByNikon, "eBay"));
+
+
+
 
 // **BONUS:** Create another search function and/or think of other interesting ways to combine the functions to preform useful searches.
